@@ -8,16 +8,199 @@
 </head>
 <body>
 
-  <main class="container">
-    <h1>Doodlify Studio</h1>
-    <p class="subtitle">
-      Turn your child’s drawing into a real 3D object ✨
+<main class="container">
+
+  <!-- LANDING -->
+  <section id="landing">
+
+  <div class="hero-layout">
+
+    <!-- LEFT: TEXT -->
+    <div class="hero-text">
+      <h1>Doodlify Studio</h1>
+      <p>Turn your child’s drawing into a real 3D object ✨</p>
+
+      <p class="hero-sub">
+        From your child’s drawing → to a real 3D model.<br>
+        Coloured keepsake or paint-it-yourself white version.
+      </p>
+
+      <button id="startBtn">Create yours</button>
+    </div>
+
+    <!-- RIGHT: IMAGE -->
+    <div class="hero-visual">
+      <img 
+        src="images/from-drawing-to-3d.jpg" 
+        alt="From child's drawing to 3D model process"
+      />
+    </div>
+
+  </div>
+
+  </section>
+
+  <!-- CREATE FLOW -->
+  <section id="createFlow" class="hidden">
+
+    <!-- UPLOAD -->
+    <div>
+      <p><strong>Upload your child’s drawing</strong></p>
+      <input type="file" id="drawingUpload" accept="image/*" />
+      <div id="previewWrapper" class="hidden">
+        <p>Preview:</p>
+        <img id="drawingPreview" style="max-width:200px;border:1px solid #ccc;" />
+      </div>
+    </div>
+
+    <h2>Create your product</h2>
+
+    <!-- ORDER TYPE -->
+    <div>
+      <p><strong>What would you like to create?</strong></p>
+
+      <label>
+        <input type="radio" name="orderType" value="model" checked>
+        3D model
+      </label><br>
+
+      <label>
+        <input type="radio" name="orderType" value="keychain">
+        Keychain only
+      </label>
+    </div>
+
+    <hr>
+
+    <!-- 3D MODEL SECTION -->
+    <div id="modelSection">
+
+      <p><strong>Choose your 3D model</strong></p>
+
+      <label>
+        <input type="radio" name="model" value="12_coloured">
+        12 cm – Coloured / varnished (£34.99)
+      </label><br>
+
+      <label>
+        <input type="radio" name="model" value="12_white">
+        12 cm – White only (£29.99)
+      </label><br><br>
+
+      <label>
+        <input type="radio" name="model" value="16_coloured">
+        16 cm – Coloured / varnished (£49.99)
+      </label><br>
+
+      <label>
+        <input type="radio" name="model" value="16_white">
+        16 cm – White only (£44.99)
+      </label><br><br>
+
+      <label>
+        <input type="radio" name="model" value="20_coloured">
+        20 cm – Coloured / varnished (£64.99)
+      </label><br>
+
+      <label>
+        <input type="radio" name="model" value="20_white">
+        20 cm – White only (£59.99)
+      </label>
+
+      <p style="font-size:0.9rem;color:#555;margin-top:6px;">
+        White models are perfect for at-home painting activities and workshops.
+      </p>
+
+      <p><strong>Add extras</strong></p>
+
+      <label>
+        <input type="checkbox" id="keychainCheckbox">
+        Add keychain (+£9.99)
+      </label><br>
+
+      <label>
+        <input type="checkbox" id="ledCheckbox">
+        Add LED stand (+£12.00)
+      </label>
+
+      <p style="font-size:0.9rem;color:#555;margin-top:6px;">
+        All 3D models come with a standard base as default.
+        The LED stand is completely optional.
+      </p>
+
+    </div>
+
+    <!-- KEYCHAIN ONLY -->
+    <div id="keychainOnlySection" class="hidden">
+      <p><strong>Keychain</strong></p>
+      <p>Turn your child’s drawing into a custom keychain.</p>
+      <p>Price: £9.99</p>
+    </div>
+
+    <p><strong>Total: £<span id="totalPrice">0.00</span></strong></p>
+
+    <p id="bundleNote" class="hidden" style="color:green;">
+      🎁 Bundle applied: 5% discount
     </p>
 
-    <button id="startBtn">Create yours</button>
-  </main>
+    <button id="continueBtn" disabled>Continue</button>
 
-  <script src="script.js"></script>
+  </section>
+
+  <!-- ORDER SUMMARY -->
+<section id="orderSummary" class="hidden">
+
+  <h2>Order summary</h2>
+
+  <div class="summary-layout">
+
+    <!-- LEFT: DETAILS -->
+    <div class="summary-details">
+      <p><strong>Product</strong></p>
+      <p id="summaryProduct"></p>
+
+      <p><strong>Extras</strong></p>
+      <p id="summaryExtras"></p>
+
+      <p><strong>Total</strong></p>
+      <p>£<span id="summaryTotal"></span></p>
+
+      <label style="display:block;margin-top:16px;">
+        <input type="checkbox" id="approveCheckbox">
+        I would like to approve the 3D preview before printing
+      </label>
+
+      <p style="font-size:0.9rem;color:#555;">
+        We’ll email you a digital 3D preview for approval before printing.
+      </p>
+
+      <label style="display:block;margin-top:12px;">
+        Email address (required)<br>
+        <input type="email" id="customerEmail" required style="width:100%;padding:6px;">
+      </label>
+
+      <button id="submitOrderBtn" disabled style="margin-top:20px;">
+        Submit order request
+      </button>
+
+      <button id="backToEditBtn" style="margin-top:12px;">
+      ← Back to edit order
+      </button>
+
+    </div>
+
+    <!-- RIGHT: IMAGE -->
+  <div class="summary-visual">
+  <img id="summaryImage" alt="3D preview example">
+  <img id="summaryKeychainImage" class="hidden" alt="Keychain preview">
+  </div>
+
+  </div>
+
+  </section>
+
+</main>
+
+<script src="script.js"></script>
 </body>
 </html>
-
