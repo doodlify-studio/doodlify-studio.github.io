@@ -227,3 +227,14 @@ function validateSubmit() {
 
 approveCheckbox.addEventListener("change", validateSubmit);
 customerEmail.addEventListener("input", validateSubmit);
+
+const formProduct = document.getElementById("formProduct");
+const formExtras = document.getElementById("formExtras");
+const formTotal = document.getElementById("formTotal");
+
+submitOrderBtn.addEventListener("click", () => {
+  formProduct.value = summaryProduct.textContent;
+  formExtras.value = summaryExtras.textContent;
+  formTotal.value = "£" + summaryTotal.textContent;
+});
+

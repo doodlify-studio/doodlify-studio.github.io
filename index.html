@@ -148,7 +148,12 @@
   </section>
 
   <!-- ORDER SUMMARY -->
-<section id="orderSummary" class="hidden">
+<form
+  id="orderSummary"
+  class="hidden"
+  action="https://formspree.io/f/mqelbwbr"
+  method="POST"
+>
 
   <h2>Order summary</h2>
 
@@ -176,8 +181,17 @@
 
       <label style="display:block;margin-top:12px;">
         Email address (required)<br>
-        <input type="email" id="customerEmail" required style="width:100%;padding:6px;">
+        <input
+          type="email"
+          id="customerEmail"
+          name="email"
+          required
+        >
       </label>
+
+      <input type="hidden" name="product" id="formProduct">
+      <input type="hidden" name="extras" id="formExtras">
+      <input type="hidden" name="total" id="formTotal">
 
       <button id="submitOrderBtn" disabled style="margin-top:20px;">
         Submit order request
@@ -197,7 +211,8 @@
 
   </div>
 
-  </section>
+ </form>
+
 
 </main>
 
