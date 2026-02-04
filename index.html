@@ -9,44 +9,61 @@
 <body>
 
 <main class="container">
-
-  <!-- LANDING -->
+<!-- BANNER -->
   <section id="landing">
+  <div class="hero-inner">
 
-  <div class="hero-layout">
-
-    <!-- LEFT: TEXT -->
     <div class="hero-text">
-      <h1>Doodlify Studio</h1>
-      <p>Turn your child’s drawing into a real 3D object ✨</p>
+      <img
+        src="images/doodlify-logo-black.png"
+        alt="Doodlify Studio logo"
+        class="hero-logo"
+      >
 
-      <p class="hero-sub">
-        From your child’s drawing → to a real 3D model.<br>
+      <h1>
+        Turn your child’s drawing<br>
+        into a real 3D keepsake ✨
+      </h1>
+
+      <p>
+        From your child’s artwork to a handcrafted 3D model.<br>
         Coloured keepsake or paint-it-yourself white version.
       </p>
 
-      <button id="startBtn">Create yours</button>
+      <p class="hero-trust">
+        No payment taken until you approve your 3D preview.
+      </p>
+
+      <button id="startBtn" class="hero-cta">
+        Create yours
+      </button>
+
     </div>
 
-    <!-- RIGHT: IMAGE -->
     <div class="hero-visual">
-      <img 
-        src="images/from-drawing-to-3d.jpg" 
-        alt="From child's drawing to 3D model process"
-      />
+      <img
+        src="images/from-drawing-to-3d.jpg"
+        alt="From drawing to 3D model"
+      >
     </div>
 
   </div>
-
-  </section>
-
+</section>
+  <!-- LANDING -->
+ 
   <!-- CREATE FLOW -->
   <section id="createFlow" class="hidden">
 
     <!-- UPLOAD -->
     <div>
-      <p><strong>Upload your child’s drawing</strong></p>
-      <input type="file" id="drawingUpload" accept="image/*" />
+      <p><strong>Upload your child’s drawing (png/jpg > max 8MB)</strong></p>
+      <input
+        type="file"
+        id="drawingUpload"
+        name="drawing"
+        accept="image/*"
+        required
+      >
       <div id="previewWrapper" class="hidden">
         <p>Preview:</p>
         <img id="drawingPreview" style="max-width:200px;border:1px solid #ccc;" />
@@ -148,13 +165,14 @@
   </section>
 
   <!-- ORDER SUMMARY -->
+<!-- ORDER SUMMARY -->
 <form
   id="orderSummary"
   class="hidden"
   action="https://formspree.io/f/mqelbwbr"
   method="POST"
+  enctype="multipart/form-data"
 >
-
   <h2>Order summary</h2>
 
   <div class="summary-layout">
@@ -192,36 +210,43 @@
       <input type="hidden" name="product" id="formProduct">
       <input type="hidden" name="extras" id="formExtras">
       <input type="hidden" name="total" id="formTotal">
+      <input type="hidden" name="order_id" id="formOrderId">
+      <input type="hidden" name="drawing_url" id="drawingUrl">
 
-    <button
-      id="submitOrderBtn"
-      type="submit"
-      disabled
-      style="margin-top:20px;"
-    >
-      Submit order request
-    </button>
+      <label style="display:block;margin-top:12px;">
+        Child’s Name & Drawing Date (will be printed on stand)<br>
+      <input type="text"  name="child_name"  placeholder="Child’s name"  required>
+      <input type="date"  name="drawing_date"  required>
+      </label>
 
-    <button
-      id="backToEditBtn"
-      type="button"
-      style="margin-top:12px;"
-    >
-      ← Back to edit order
-    </button>
+      <button
+        id="submitOrderBtn"
+        type="submit"
+        disabled
+        style="margin-top:20px;"
+      >
+        Submit order request
+      </button>
+
+      <button
+        id="backToEditBtn"
+        type="button"
+        style="margin-top:12px;"
+      >
+        ← Back to edit order
+      </button>
 
     </div>
 
     <!-- RIGHT: IMAGE -->
-  <div class="summary-visual">
-  <img id="summaryImage" alt="3D preview example">
-  <img id="summaryKeychainImage" class="hidden" alt="Keychain preview">
-  </div>
+    <div class="summary-visual">
+      <img id="summaryImage" alt="3D preview example">
+      <img id="summaryKeychainImage" class="hidden" alt="Keychain preview">
+    </div>
 
   </div>
 
- </form>
-
+</form>
 
 </main>
 

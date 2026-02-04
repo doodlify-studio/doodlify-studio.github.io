@@ -60,6 +60,11 @@ const customerEmail = document.getElementById("customerEmail");
 const submitOrderBtn = document.getElementById("submitOrderBtn");
 const backToEditBtn = document.getElementById("backToEditBtn");
 
+// Cloudinary config
+const CLOUD_NAME = "dh5g2xse3";
+const UPLOAD_PRESET = "doodlify_unsigned";
+
+
 /* ======================
    LANDING
 ====================== */
@@ -233,8 +238,65 @@ const formExtras = document.getElementById("formExtras");
 const formTotal = document.getElementById("formTotal");
 
 submitOrderBtn.addEventListener("click", () => {
+  // Order ID üret
+  const orderId = generateOrderId();
+  document.getElementById("formOrderId").value = orderId;
+
+  // Form alanlarını doldur
   formProduct.value = summaryProduct.textContent;
   formExtras.value = summaryExtras.textContent;
   formTotal.value = "£" + summaryTotal.textContent;
+
+  console.log("Order ID generated:", orderId);
 });
 
+
+function generateOrderId() {
+  const date = new Date();
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  const rand = Math.floor(1000 + Math.random() * 9000);
+
+  return `DL-${y}${m}${d}-${rand}`;
+}
+
+/* ======================
+   Upload Image URL to Form
+====================== */
+
+document.addEventListener("DOMContentLoaded", () => {
+  const uploadInput = document.getElementById("drawingUpload");
+  const drawingUrlInput = document.getElementById("drawingUrl");
+
+  if (!uploadInput || !drawingUrlInput) {
+    console.error("Upload elements not found");
+    return;
+  }
+
+  uploadInput.addEventListener("change", async () => {
+    const file = uploadInput.files[0];
+    if (!file) return;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "doodlify_unsigned");
+
+    try {
+      const res = await fetch(
+        "https://api.cloudinary.com/v1_1/dh5g2xse3/image/upload",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+      const data = await res.json();
+      drawingUrlInput.value = data.secure_url;
+      console.log("Uploaded:", data.secure_url);
+    } catch (err) {
+      console.error(err);
+      alert("Upload failed");
+    }
+  });
+});
