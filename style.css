@@ -246,6 +246,85 @@ img {
   color: #555;
 }
 
+.why-card {
+  transition: 
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.why-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+}
+
+/* ikon için küçük bounce hissi */
+.why-icon {
+  transition: transform 0.25s ease;
+}
+
+.why-card:hover .why-icon {
+  transform: scale(1.15) rotate(-3deg);
+}
+
+.site-footer {
+  background: #fceacf; /* Tiny Visions turuncusuna yakın */
+  color: #111;
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 24px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 48px;
+  flex-wrap: wrap;
+}
+
+.footer-logo {
+  width: 200px;
+  margin-bottom: 2px;
+}
+
+.footer-tagline {
+  max-width: 340px;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.footer-contact h4 {
+  margin-bottom: 14px;
+  font-size: 1.05rem;
+}
+
+.footer-contact a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #111;
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 10px;
+}
+
+/* INSTAGRAM */
+.footer-instagram img {
+  width: 72px;
+  height: 72px;
+}
+
+.footer-contact a:hover {
+  opacity: 0.75;
+}
+
+/* BOTTOM BAR */
+.footer-bottom {
+  border-top: 1px solid rgba(0,0,0,0.15);
+  text-align: center;
+  padding: 14px;
+  font-size: 0.8rem;
+}
 
 
 
