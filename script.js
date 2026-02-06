@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 console.log("script loaded");
 
 /* ======================
@@ -14,7 +15,7 @@ const PRICES = {
     "20_white": 59.99
   },
   keychain: 9.99,
-  led: 12.0
+  led: 0
 };
 
 const SIZE_LABELS = {
@@ -37,8 +38,6 @@ let drawingUploaded = false;
    ELEMENTS
 ====================== */
 
-const startBtn = document.getElementById("startBtn");
-const landing = document.getElementById("landing");
 const createFlow = document.getElementById("createFlow");
 const continueBtn = document.getElementById("continueBtn");
 const totalPriceEl = document.getElementById("totalPrice");
@@ -63,16 +62,6 @@ const backToEditBtn = document.getElementById("backToEditBtn");
 // Cloudinary config
 const CLOUD_NAME = "dh5g2xse3";
 const UPLOAD_PRESET = "doodlify_unsigned";
-
-
-/* ======================
-   LANDING
-====================== */
-
-startBtn.addEventListener("click", () => {
-  landing.classList.add("hidden");
-  createFlow.classList.remove("hidden");
-});
 
 /* ======================
    UPLOAD
@@ -299,4 +288,5 @@ document.addEventListener("DOMContentLoaded", () => {
       alert("Upload failed");
     }
   });
+});
 });
